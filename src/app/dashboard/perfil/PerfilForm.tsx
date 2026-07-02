@@ -298,8 +298,7 @@ export default function PerfilForm({
   );
 }
 
-const inputClass =
-  "w-full rounded-xl border border-brand-200 bg-cream/60 px-4 py-2.5 text-sm text-brand-900 placeholder:text-brand-400 transition focus:border-brand-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-200/70";
+const inputClass = "field";
 
 function Field({
   label,
