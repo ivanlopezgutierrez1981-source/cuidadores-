@@ -101,6 +101,10 @@ create or replace view public.profiles_publicos as
     (p.destacado_hasta is not null and p.destacado_hasta > now()) as destacado_activo
   from public.profiles p;
 
+-- Acceso de lectura a la vista para el cliente (anon) y usuarios logueados.
+-- Defensivo: garantiza el SELECT aunque los privilegios por defecto no cubran la vista.
+grant select on public.profiles_publicos to anon, authenticated;
+
 -- ════════════════════════════════════════════════════════════════
 --  ROW LEVEL SECURITY
 -- ════════════════════════════════════════════════════════════════
