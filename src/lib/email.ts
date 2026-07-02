@@ -35,7 +35,16 @@ interface AvisoContacto {
 export async function enviarAvisoContacto(
   datos: AvisoContacto
 ): Promise<{ ok: boolean; error?: string }> {
+  // Diagnóstico: estado de la configuración (sin exponer la key).
+  const usaFallbackFrom = !process.env.EMAIL_FROM;
+  console.log(
+    `[email] Preparando envío → RESEND_API_KEY=${apiKey ? "presente (" + apiKey.slice(0, 4) + "…)" : "AUSENTE"}, ` +
+      `EMAIL_FROM="${EMAIL_FROM}"${usaFallbackFrom ? " (fallback onboarding@resend.dev)" : ""}, ` +
+      `to="${datos.para}"`
+  );
+
   if (!resend) {
+    console.error("[email] Abortado: RESEND_API_KEY no configurada.");
     return { ok: false, error: "RESEND_API_KEY no configurada" };
   }
 
@@ -50,10 +59,20 @@ export async function enviarAvisoContacto(
     });
 
     if (error) {
+      // Log del error EXACTO de Resend (statusCode, name, message).
+      console.error(
+        `[email] Resend RECHAZÓ el envío a "${datos.para}": ${JSON.stringify(error)}`
+      );
       return { ok: false, error: error.message || "Error de Resend" };
     }
+
+    console.log(`[email] Enviado OK a "${datos.para}" · Resend id=${data?.id ?? "?"}`);
     return { ok: Boolean(data) };
   } catch (e) {
+    console.error(
+      `[email] Excepción al enviar a "${datos.para}":`,
+      e instanceof Error ? `${e.name}: ${e.message}` : e
+    );
     return { ok: false, error: e instanceof Error ? e.message : "Error desconocido" };
   }
 }

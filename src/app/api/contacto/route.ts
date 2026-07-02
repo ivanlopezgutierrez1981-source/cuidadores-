@@ -61,18 +61,35 @@ export async function POST(req: Request) {
   // ── 2) Aviso por email (best-effort, no rompe el flujo) ─────
   // El contacto YA está guardado; a partir de aquí respondemos siempre OK.
   try {
-    const { data: perfil } = await supabase
+    const { data: perfil, error: perfilErr } = await supabase
       .from("profiles")
       .select("nombre, email_contacto, user_id")
       .eq("id", profileId)
       .maybeSingle();
 
+    if (perfilErr) {
+      console.error(`[contacto] Error leyendo el perfil ${profileId}:`, perfilErr.message);
+    }
+
     // Email destino: email_contacto del perfil o, en su defecto, el de la cuenta.
     let destino = perfil?.email_contacto?.trim() || "";
+    let origen = destino ? "profiles.email_contacto" : "";
     if (!destino && perfil?.user_id) {
-      const { data: userData } = await supabase.auth.admin.getUserById(perfil.user_id);
+      const { data: userData, error: userErr } = await supabase.auth.admin.getUserById(
+        perfil.user_id
+      );
+      if (userErr) {
+        console.error("[contacto] Error leyendo auth.users:", userErr.message);
+      }
       destino = userData?.user?.email ?? "";
+      origen = destino ? "auth.users (cuenta)" : "";
     }
+
+    console.log(
+      `[contacto] Contacto GUARDADO para perfil=${profileId}. ` +
+        `Destino aviso="${destino || "(vacío)"}"${origen ? ` [origen: ${origen}]` : ""}. ` +
+        `email_contacto=${perfil?.email_contacto ? "sí" : "no"}, user_id=${perfil?.user_id ? "sí" : "no"}.`
+    );
 
     if (destino && EMAIL_RE.test(destino)) {
       const res = await enviarAvisoContacto({
@@ -88,7 +105,7 @@ export async function POST(req: Request) {
       }
     } else {
       console.warn(
-        `[contacto] El cuidador ${profileId} no tiene email de aviso; se omite el envío.`
+        `[contacto] El cuidador ${profileId} no tiene email de aviso válido ("${destino}"); se omite el envío.`
       );
     }
   } catch (e) {
