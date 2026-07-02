@@ -21,8 +21,8 @@ export default function CookieBanner() {
 
   return (
     <div className="fixed inset-x-0 bottom-0 z-50 p-4">
-      <div className="container-page rounded-2xl border border-brand-100 bg-white p-5 shadow-soft sm:flex sm:items-center sm:justify-between sm:gap-6">
-        <p className="text-sm text-brand-700">
+      <div className="container-page rounded-3xl border border-brand-100 bg-white/95 p-5 shadow-soft backdrop-blur sm:flex sm:items-center sm:justify-between sm:gap-6">
+        <p className="text-sm leading-relaxed text-brand-600">
           Usamos cookies propias y de terceros para mejorar tu experiencia. Puedes
           aceptarlas o rechazar las no esenciales. Más info en nuestra{" "}
           <Link href="/cookies" className="font-semibold text-brand-600 underline">

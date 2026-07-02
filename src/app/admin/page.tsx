@@ -59,7 +59,7 @@ export default async function AdminHome() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold text-brand-900">Resumen</h1>
+      <h1 className="text-3xl font-semibold text-brand-900">Resumen</h1>
       <p className="mt-1 text-sm text-brand-600">Métricas generales de cuidadores.xyz.</p>
 
       <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -69,7 +69,7 @@ export default async function AdminHome() {
           valor={m.completos}
           sub={`${m.incompletos} incompletos`}
         />
-        <Metrica titulo="Destacados activos" valor={m.destacados} acento="amber" />
+        <Metrica titulo="Destacados activos" valor={m.destacados} acento="gold" />
         <Metrica
           titulo="Ingresos estimados"
           valor={formatearEuros(m.ingresos)}
@@ -101,14 +101,14 @@ function Metrica({
   titulo: string;
   valor: number | string;
   sub?: string;
-  acento?: "amber" | "brand";
+  acento?: "gold" | "brand";
 }) {
   const color =
-    acento === "amber" ? "text-amber-600" : acento === "brand" ? "text-brand-600" : "text-brand-900";
+    acento === "gold" ? "text-gold-600" : acento === "brand" ? "text-brand-600" : "text-brand-900";
   return (
-    <div className="rounded-2xl border border-brand-100 bg-white p-5 shadow-card">
+    <div className="rounded-3xl border border-brand-100 bg-white p-6 shadow-card">
       <p className="text-sm text-brand-500">{titulo}</p>
-      <p className={`mt-2 text-3xl font-extrabold ${color}`}>{valor}</p>
+      <p className={`mt-2 font-serif text-4xl font-semibold ${color}`}>{valor}</p>
       {sub && <p className="mt-1 text-xs text-brand-400">{sub}</p>}
     </div>
   );
@@ -118,9 +118,9 @@ function AccesoRapido({ href, titulo, desc }: { href: string; titulo: string; de
   return (
     <Link
       href={href}
-      className="rounded-2xl border border-brand-100 bg-white p-5 shadow-card transition-all hover:-translate-y-0.5 hover:shadow-soft"
+      className="group rounded-3xl border border-brand-100 bg-white p-6 shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-brand-200 hover:shadow-lift"
     >
-      <h3 className="font-semibold text-brand-800">{titulo}</h3>
+      <h3 className="font-serif text-lg font-semibold text-brand-900">{titulo}</h3>
       <p className="mt-1 text-sm text-brand-500">{desc}</p>
     </Link>
   );

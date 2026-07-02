@@ -23,12 +23,12 @@ export default async function AdminSuscripciones() {
     <div>
       <div className="flex items-end justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-brand-900">Suscripciones / pagos</h1>
+          <h1 className="text-3xl font-semibold text-brand-900">Suscripciones / pagos</h1>
           <p className="mt-1 text-sm text-brand-600">{subs.length} pagos de destacado.</p>
         </div>
         <div className="text-right">
           <p className="text-xs text-brand-500">Ingresos totales</p>
-          <p className="text-2xl font-extrabold text-brand-600">{formatearEuros(totalIngresos)}</p>
+          <p className="font-serif text-3xl font-semibold text-brand-800">{formatearEuros(totalIngresos)}</p>
         </div>
       </div>
 
@@ -72,7 +72,7 @@ export default async function AdminSuscripciones() {
                     <td className="px-4 py-3 text-brand-600">{formatearFecha(s.destacado_hasta)}</td>
                     <td className="px-4 py-3">
                       {activoAhora ? (
-                        <span className="rounded-full bg-amber-100 px-2.5 py-0.5 text-xs font-semibold text-amber-700">
+                        <span className="rounded-full border border-gold-300/80 bg-gold-100 px-2.5 py-0.5 text-xs font-semibold text-gold-700">
                           Activo
                         </span>
                       ) : (

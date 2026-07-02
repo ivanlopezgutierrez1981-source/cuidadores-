@@ -17,7 +17,7 @@ export default async function AdminContactos() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold text-brand-900">Contactos recibidos</h1>
+      <h1 className="text-3xl font-semibold text-brand-900">Contactos recibidos</h1>
       <p className="mt-1 text-sm text-brand-600">
         {contactos.length} mensajes de familias (solo lectura).
       </p>

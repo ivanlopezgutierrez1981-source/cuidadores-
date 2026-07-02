@@ -52,7 +52,7 @@ export default function FiltrosBusqueda({ inicial }: { inicial: FiltrosValores }
   return (
     <form
       onSubmit={aplicar}
-      className="rounded-3xl border border-brand-100 bg-white p-4 shadow-card sm:p-5"
+      className="rounded-4xl border border-brand-100 bg-white p-5 shadow-card sm:p-6"
     >
       <div className="grid gap-3 md:grid-cols-4">
         <div>
@@ -120,4 +120,4 @@ export default function FiltrosBusqueda({ inicial }: { inicial: FiltrosValores }
 }
 
 const inputClass =
-  "w-full rounded-xl border border-brand-100 bg-cream px-3 py-2.5 text-sm text-brand-900 placeholder:text-brand-400 focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-200";
+  "w-full rounded-xl border border-brand-200 bg-cream/60 px-3.5 py-2.5 text-sm text-brand-900 placeholder:text-brand-400 transition focus:border-brand-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-200/70";

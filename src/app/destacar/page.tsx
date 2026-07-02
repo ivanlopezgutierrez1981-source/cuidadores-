@@ -40,13 +40,13 @@ export default async function DestacarPage() {
   return (
     <section className="container-page py-12">
       <div className="mx-auto max-w-2xl text-center">
-        <span className="inline-flex items-center gap-2 rounded-full bg-amber-100 px-4 py-1.5 text-sm font-semibold text-amber-700">
-          ⭐ Más visibilidad, más solicitudes
+        <span className="badge-gold">
+          <StarIcon /> Más visibilidad, más solicitudes
         </span>
-        <h1 className="mt-4 text-3xl font-bold text-brand-900 sm:text-4xl">
+        <h1 className="mt-5 text-4xl font-semibold text-brand-900 sm:text-5xl">
           Destaca tu perfil y aparece en primera fila
         </h1>
-        <p className="mt-3 text-brand-600">
+        <p className="mt-4 text-brand-600">
           Los perfiles destacados se muestran arriba del todo en el listado, con un
           badge visible. Es un pago único: cuando caduca, decides si renuevas.
         </p>
@@ -92,15 +92,23 @@ export default async function DestacarPage() {
           { e: "⭐", t: "Badge destacado", d: "Un distintivo que genera más confianza." },
           { e: "📈", t: "Más solicitudes", d: "Mayor visibilidad = más familias te contactan." },
         ].map((v) => (
-          <div key={v.t} className="rounded-2xl border border-brand-100 bg-white p-6 text-center shadow-card">
-            <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-brand-50 text-2xl">
+          <div key={v.t} className="rounded-4xl border border-brand-100 bg-white p-7 text-center shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-lift">
+            <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-50 text-2xl ring-1 ring-brand-100/80">
               {v.e}
             </div>
-            <h3 className="mt-4 font-semibold text-brand-800">{v.t}</h3>
-            <p className="mt-1 text-sm text-brand-600">{v.d}</p>
+            <h3 className="mt-5 font-serif text-lg font-semibold text-brand-900">{v.t}</h3>
+            <p className="mt-1.5 text-sm text-brand-600">{v.d}</p>
           </div>
         ))}
       </div>
     </section>
+  );
+}
+
+function StarIcon() {
+  return (
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+      <path d="M12 2l2.9 6.26L21.6 9l-4.8 4.68L18 21l-6-3.2L6 21l1.2-7.32L2.4 9l6.7-.74L12 2z" />
+    </svg>
   );
 }

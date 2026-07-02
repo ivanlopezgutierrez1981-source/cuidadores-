@@ -26,7 +26,7 @@ export default async function AdminLayout({
       <div className="border-b border-brand-100 bg-white">
         <div className="container-page flex flex-col gap-3 py-4 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-center gap-3">
-            <span className="rounded-lg bg-brand-500 px-2.5 py-1 text-xs font-bold text-white">
+            <span className="rounded-lg bg-brand-800 px-2.5 py-1 text-xs font-bold tracking-wide text-white">
               ADMIN
             </span>
             <span className="text-sm text-brand-600">{user.email}</span>

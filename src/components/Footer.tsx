@@ -2,42 +2,49 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="mt-24 border-t border-brand-100 bg-white">
-      <div className="container-page grid gap-10 py-12 sm:grid-cols-2 lg:grid-cols-4">
-        <div>
-          <span className="text-lg font-bold text-brand-800">
-            cuidadores<span className="text-brand-400">.xyz</span>
+    <footer className="mt-28 border-t border-brand-100 bg-white">
+      <div className="container-page grid gap-10 py-16 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="max-w-xs">
+          <span className="font-serif text-xl font-semibold tracking-tight text-brand-900">
+            cuidadores<span className="text-gold-500">.xyz</span>
           </span>
-          <p className="mt-3 max-w-xs text-sm text-brand-600">
+          <p className="mt-4 text-sm leading-relaxed text-brand-600">
             Conectamos familias con cuidadores y cuidadoras de confianza para
-            niños, mayores y personas dependientes.
+            niños, mayores y personas dependientes. Cuidado cercano, tratado con
+            seriedad.
           </p>
         </div>
 
         <div>
-          <h4 className="text-sm font-semibold text-brand-800">Cuidadores</h4>
-          <ul className="mt-3 space-y-2 text-sm text-brand-600">
-            <li><Link href="/registro" className="hover:text-brand-900">Crear perfil</Link></li>
-            <li><Link href="/destacar" className="hover:text-brand-900">Destacar perfil</Link></li>
-            <li><Link href="/login" className="hover:text-brand-900">Acceder</Link></li>
+          <h4 className="text-xs font-semibold uppercase tracking-[0.14em] text-brand-500">
+            Cuidadores
+          </h4>
+          <ul className="mt-4 space-y-2.5 text-sm text-brand-600">
+            <li><Link href="/registro" className="link-underline">Crear perfil</Link></li>
+            <li><Link href="/destacar" className="link-underline">Destacar perfil</Link></li>
+            <li><Link href="/login" className="link-underline">Acceder</Link></li>
           </ul>
         </div>
 
         <div>
-          <h4 className="text-sm font-semibold text-brand-800">Familias</h4>
-          <ul className="mt-3 space-y-2 text-sm text-brand-600">
-            <li><Link href="/buscar" className="hover:text-brand-900">Buscar cuidador/a</Link></li>
-            <li><Link href="/como-funciona" className="hover:text-brand-900">Cómo funciona</Link></li>
+          <h4 className="text-xs font-semibold uppercase tracking-[0.14em] text-brand-500">
+            Familias
+          </h4>
+          <ul className="mt-4 space-y-2.5 text-sm text-brand-600">
+            <li><Link href="/buscar" className="link-underline">Buscar cuidador/a</Link></li>
+            <li><Link href="/como-funciona" className="link-underline">Cómo funciona</Link></li>
           </ul>
         </div>
 
         <div>
-          <h4 className="text-sm font-semibold text-brand-800">Legal</h4>
-          <ul className="mt-3 space-y-2 text-sm text-brand-600">
-            <li><Link href="/aviso-legal" className="hover:text-brand-900">Aviso legal</Link></li>
-            <li><Link href="/privacidad" className="hover:text-brand-900">Privacidad</Link></li>
-            <li><Link href="/cookies" className="hover:text-brand-900">Cookies</Link></li>
-            <li><Link href="/terminos" className="hover:text-brand-900">Términos de uso</Link></li>
+          <h4 className="text-xs font-semibold uppercase tracking-[0.14em] text-brand-500">
+            Legal
+          </h4>
+          <ul className="mt-4 space-y-2.5 text-sm text-brand-600">
+            <li><Link href="/aviso-legal" className="link-underline">Aviso legal</Link></li>
+            <li><Link href="/privacidad" className="link-underline">Privacidad</Link></li>
+            <li><Link href="/cookies" className="link-underline">Cookies</Link></li>
+            <li><Link href="/terminos" className="link-underline">Términos de uso</Link></li>
           </ul>
         </div>
       </div>

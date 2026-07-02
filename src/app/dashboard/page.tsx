@@ -46,7 +46,7 @@ export default async function DashboardPage({
   return (
     <section className="container-page py-12">
       <div className="mb-8 flex flex-col gap-2">
-        <h1 className="text-3xl font-bold text-brand-900">Hola, {profile.nombre} 👋</h1>
+        <h1 className="text-4xl font-semibold text-brand-900">Hola, {profile.nombre} 👋</h1>
         <p className="text-brand-600">Este es tu panel de cuidador/a. {user.email}</p>
       </div>
 
@@ -71,7 +71,7 @@ export default async function DashboardPage({
 
       <div className="grid gap-6 lg:grid-cols-3">
         {/* Tarjeta de estado del perfil */}
-        <div className="lg:col-span-2 rounded-3xl border border-brand-100 bg-white p-6 shadow-card">
+        <div className="lg:col-span-2 rounded-4xl border border-brand-100 bg-white p-6 shadow-card">
           <div className="flex items-center gap-4">
             <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-2xl bg-brand-100">
               {profile.foto_url ? (
@@ -101,14 +101,14 @@ export default async function DashboardPage({
           </div>
 
           {/* Progreso de completado */}
-          <div className="mt-6">
-            <div className="mb-2 flex items-center justify-between text-sm">
+          <div className="mt-7">
+            <div className="mb-2.5 flex items-center justify-between text-sm">
               <span className="font-medium text-brand-700">Perfil completado</span>
-              <span className="font-semibold text-brand-600">{completado}%</span>
+              <span className="font-serif text-base font-semibold text-brand-800">{completado}%</span>
             </div>
-            <div className="h-2.5 w-full overflow-hidden rounded-full bg-brand-50">
+            <div className="h-2.5 w-full overflow-hidden rounded-full bg-brand-100">
               <div
-                className="h-full rounded-full bg-brand-500 transition-all"
+                className="h-full rounded-full bg-gradient-to-r from-gold-400 to-gold-500 transition-all duration-700 ease-out"
                 style={{ width: `${completado}%` }}
               />
             </div>
@@ -121,15 +121,15 @@ export default async function DashboardPage({
         </div>
 
         {/* Tarjeta de estado de destacado */}
-        <div className="rounded-3xl border border-brand-100 bg-white p-6 shadow-card">
+        <div className="rounded-4xl border border-brand-100 bg-white p-6 shadow-card">
           <h3 className="text-sm font-semibold text-brand-800">Estado de destacado</h3>
           {destacado ? (
             <div className="mt-3">
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-100 px-3 py-1 text-xs font-semibold text-amber-700">
-                ⭐ Destacado activo
+              <span className="badge-gold">
+                <StarIcon /> Destacado activo
               </span>
-              <p className="mt-4 text-3xl font-extrabold text-brand-800">
-                {diasRestantes} <span className="text-base font-medium text-brand-500">día{diasRestantes === 1 ? "" : "s"}</span>
+              <p className="mt-4 font-serif text-4xl font-semibold text-brand-900">
+                {diasRestantes} <span className="text-base font-sans font-medium text-brand-500">día{diasRestantes === 1 ? "" : "s"}</span>
               </p>
               <p className="text-xs text-brand-500">restantes en primera fila</p>
             </div>
@@ -145,7 +145,7 @@ export default async function DashboardPage({
           )}
           <Link
             href="/destacar"
-            className="btn-secondary mt-5 w-full text-sm"
+            className={`mt-5 w-full text-sm ${destacado ? "btn-secondary" : "btn-gold"}`}
           >
             {destacado ? "Renovar destacado" : "Destacar mi perfil"}
           </Link>
@@ -166,13 +166,21 @@ function QuickLink({ href, title, desc }: { href: string; title: string; desc: s
   return (
     <Link
       href={href}
-      className="group rounded-2xl border border-brand-100 bg-white p-5 shadow-card transition-all hover:-translate-y-0.5 hover:shadow-soft"
+      className="group rounded-3xl border border-brand-100 bg-white p-6 shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-brand-200 hover:shadow-lift"
     >
-      <h4 className="font-semibold text-brand-800">{title}</h4>
+      <h4 className="font-serif text-lg font-semibold text-brand-900">{title}</h4>
       <p className="mt-1 text-sm text-brand-500">{desc}</p>
-      <span className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-brand-500 group-hover:gap-2">
-        Abrir →
+      <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-700 transition-all group-hover:gap-2.5">
+        Abrir <span className="text-gold-500">→</span>
       </span>
     </Link>
+  );
+}
+
+function StarIcon() {
+  return (
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+      <path d="M12 2l2.9 6.26L21.6 9l-4.8 4.68L18 21l-6-3.2L6 21l1.2-7.32L2.4 9l6.7-.74L12 2z" />
+    </svg>
   );
 }

@@ -63,7 +63,7 @@ export default async function CuidadorPage({ params }: { params: { id: string } 
         {/* ── Columna principal ── */}
         <div className="lg:col-span-2 space-y-6">
           {/* Cabecera */}
-          <div className="overflow-hidden rounded-3xl border border-brand-100 bg-white shadow-card">
+          <div className="overflow-hidden rounded-4xl border border-brand-100 bg-white shadow-soft">
             <div className="relative aspect-[16/9] w-full bg-brand-100 sm:aspect-[2/1]">
               {c.foto_url ? (
                 <Image
@@ -80,16 +80,16 @@ export default async function CuidadorPage({ params }: { params: { id: string } 
                 </span>
               )}
               {destacado && (
-                <span className="absolute left-4 top-4 inline-flex items-center gap-1 rounded-full bg-amber-400 px-3 py-1.5 text-xs font-bold text-amber-900 shadow-soft">
-                  ⭐ Destacado
+                <span className="badge-gold absolute left-4 top-4 shadow-sm">
+                  <StarIcon /> Destacado
                 </span>
               )}
             </div>
 
-            <div className="p-6">
+            <div className="p-7">
               <div className="flex flex-wrap items-start justify-between gap-3">
                 <div>
-                  <h1 className="text-2xl font-bold text-brand-900">{c.nombre}</h1>
+                  <h1 className="text-3xl font-semibold text-brand-900">{c.nombre}</h1>
                   {c.zona && (
                     <p className="mt-1 flex items-center gap-1 text-brand-500">
                       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden>
@@ -101,7 +101,7 @@ export default async function CuidadorPage({ params }: { params: { id: string } 
                   )}
                 </div>
                 {c.tarifa_hora != null && (
-                  <span className="rounded-2xl bg-brand-50 px-4 py-2 text-lg font-bold text-brand-600">
+                  <span className="rounded-2xl bg-brand-50 px-4 py-2 text-lg font-bold text-brand-700 ring-1 ring-brand-100">
                     {formatearTarifa(c.tarifa_hora)}/h
                   </span>
                 )}
@@ -119,25 +119,26 @@ export default async function CuidadorPage({ params }: { params: { id: string } 
               </div>
 
               {c.descripcion && (
-                <p className="mt-5 text-brand-700">{c.descripcion}</p>
+                <p className="mt-5 leading-relaxed text-brand-600">{c.descripcion}</p>
               )}
             </div>
           </div>
 
           {/* Currículum */}
           {c.curriculum && (
-            <div className="rounded-3xl border border-brand-100 bg-white p-6 shadow-card">
-              <h2 className="text-lg font-semibold text-brand-800">Experiencia y currículum</h2>
-              <p className="mt-3 whitespace-pre-line text-brand-700">{c.curriculum}</p>
+            <div className="rounded-4xl border border-brand-100 bg-white p-7 shadow-card">
+              <h2 className="text-xl font-semibold text-brand-900">Experiencia y currículum</h2>
+              <span className="mt-3 block h-px w-12 bg-gold-400" />
+              <p className="mt-4 whitespace-pre-line leading-relaxed text-brand-600">{c.curriculum}</p>
             </div>
           )}
         </div>
 
         {/* ── Columna lateral: contacto ── */}
         <div className="lg:col-span-1">
-          <div id="contactar" className="sticky top-20 rounded-3xl border border-brand-100 bg-white p-6 shadow-card">
-            <h2 className="text-lg font-semibold text-brand-800">Contactar con {c.nombre}</h2>
-            <p className="mt-1 text-sm text-brand-500">
+          <div id="contactar" className="sticky top-24 rounded-4xl border border-brand-100 bg-white p-7 shadow-soft">
+            <h2 className="text-xl font-semibold text-brand-900">Contactar con {c.nombre}</h2>
+            <p className="mt-2 text-sm text-brand-500">
               Envía un mensaje gratis. Sin registro ni comisiones.
             </p>
             <div className="mt-5">
@@ -152,8 +153,16 @@ export default async function CuidadorPage({ params }: { params: { id: string } 
 
 function Chip({ children }: { children: React.ReactNode }) {
   return (
-    <span className="rounded-full bg-cream px-3 py-1.5 text-sm font-medium text-brand-700">
+    <span className="rounded-full bg-cream px-3.5 py-1.5 text-sm font-medium text-brand-700 ring-1 ring-brand-100/80">
       {children}
     </span>
+  );
+}
+
+function StarIcon() {
+  return (
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+      <path d="M12 2l2.9 6.26L21.6 9l-4.8 4.68L18 21l-6-3.2L6 21l1.2-7.32L2.4 9l6.7-.74L12 2z" />
+    </svg>
   );
 }

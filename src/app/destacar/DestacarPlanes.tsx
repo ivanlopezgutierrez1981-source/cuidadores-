@@ -34,7 +34,7 @@ export default function DestacarPlanes() {
   const planes = Object.values(PLANES);
 
   return (
-    <div className="mx-auto mt-10 max-w-3xl">
+    <div className="mx-auto mt-12 max-w-3xl">
       {error && (
         <div className="mb-6 rounded-xl bg-red-50 px-4 py-3 text-center text-sm text-red-700">
           {error}
@@ -47,30 +47,30 @@ export default function DestacarPlanes() {
           return (
             <div
               key={plan.id}
-              className={`relative flex flex-col rounded-3xl border bg-white p-7 shadow-card ${
-                destacado ? "border-amber-300 ring-2 ring-amber-100" : "border-brand-100"
+              className={`relative flex flex-col rounded-4xl border bg-white p-8 shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-lift ${
+                destacado ? "border-gold-300 ring-2 ring-gold-200/70" : "border-brand-100"
               }`}
             >
               {destacado && (
-                <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-amber-400 px-3 py-1 text-xs font-bold text-amber-900">
-                  Más elegido
+                <span className="badge-gold absolute -top-3 left-1/2 -translate-x-1/2 shadow-sm">
+                  <StarIcon /> Más elegido
                 </span>
               )}
-              <h3 className="text-lg font-semibold text-brand-800">{plan.nombre}</h3>
+              <h3 className="font-serif text-xl font-semibold text-brand-900">{plan.nombre}</h3>
               <p className="mt-3">
-                <span className="text-4xl font-extrabold text-brand-900">{plan.precioLabel}</span>
+                <span className="font-serif text-5xl font-semibold text-brand-900">{plan.precioLabel}</span>
                 <span className="ml-2 text-sm text-brand-500">pago único</span>
               </p>
               <p className="mt-2 text-sm text-brand-600">{plan.descripcion}</p>
 
-              <ul className="mt-5 space-y-2 text-sm text-brand-700">
-                <li className="flex items-center gap-2">
+              <ul className="mt-6 space-y-2.5 text-sm text-brand-700">
+                <li className="flex items-center gap-2.5">
                   <Check /> {plan.dias} días en primera fila
                 </li>
-                <li className="flex items-center gap-2">
-                  <Check /> Badge ⭐ Destacado
+                <li className="flex items-center gap-2.5">
+                  <Check /> Badge Destacado dorado
                 </li>
-                <li className="flex items-center gap-2">
+                <li className="flex items-center gap-2.5">
                   <Check /> Más visibilidad ante las familias
                 </li>
               </ul>
@@ -78,7 +78,7 @@ export default function DestacarPlanes() {
               <button
                 onClick={() => pagar(plan.id)}
                 disabled={cargando !== null}
-                className={`mt-6 w-full ${destacado ? "btn-primary" : "btn-secondary"} disabled:opacity-60`}
+                className={`mt-7 w-full ${destacado ? "btn-gold" : "btn-secondary"} disabled:opacity-60`}
               >
                 {cargando === plan.id ? "Redirigiendo a Stripe…" : `Destacar por ${plan.precioLabel}`}
               </button>
@@ -87,7 +87,7 @@ export default function DestacarPlanes() {
         })}
       </div>
 
-      <p className="mt-6 text-center text-xs text-brand-400">
+      <p className="mt-7 text-center text-xs text-brand-400">
         Pago seguro procesado por Stripe. No se trata de una suscripción: solo se cobra una vez.
       </p>
     </div>
@@ -96,8 +96,18 @@ export default function DestacarPlanes() {
 
 function Check() {
   return (
-    <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-100 text-xs text-brand-600">
-      ✓
+    <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-gold-100 text-gold-700">
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" aria-hidden>
+        <path d="M5 13l4 4L19 7" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
     </span>
+  );
+}
+
+function StarIcon() {
+  return (
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+      <path d="M12 2l2.9 6.26L21.6 9l-4.8 4.68L18 21l-6-3.2L6 21l1.2-7.32L2.4 9l6.7-.74L12 2z" />
+    </svg>
   );
 }

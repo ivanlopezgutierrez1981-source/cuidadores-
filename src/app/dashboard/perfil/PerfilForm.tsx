@@ -155,7 +155,7 @@ export default function PerfilForm({
     <form onSubmit={onSubmit} className="grid gap-6 lg:grid-cols-3">
       {/* Columna izquierda: foto */}
       <div className="lg:col-span-1">
-        <div className="rounded-3xl border border-brand-100 bg-white p-6 shadow-card">
+        <div className="rounded-4xl border border-brand-100 bg-white p-6 shadow-card">
           <h3 className="text-sm font-semibold text-brand-800">Foto de perfil</h3>
           <div className="mt-4 flex flex-col items-center">
             <div className="relative h-36 w-36 overflow-hidden rounded-2xl bg-brand-100">
@@ -202,7 +202,7 @@ export default function PerfilForm({
           <div className="rounded-2xl bg-red-50 px-4 py-3 text-sm text-red-700">{error}</div>
         )}
 
-        <div className="rounded-3xl border border-brand-100 bg-white p-6 shadow-card">
+        <div className="rounded-4xl border border-brand-100 bg-white p-6 shadow-card">
           <h3 className="mb-4 text-sm font-semibold text-brand-800">Datos básicos</h3>
           <div className="grid gap-4 sm:grid-cols-2">
             <Field label="Nombre *" full>
@@ -231,7 +231,7 @@ export default function PerfilForm({
           </div>
         </div>
 
-        <div className="rounded-3xl border border-brand-100 bg-white p-6 shadow-card">
+        <div className="rounded-4xl border border-brand-100 bg-white p-6 shadow-card">
           <h3 className="mb-4 text-sm font-semibold text-brand-800">Sobre ti</h3>
           <div className="space-y-4">
             <Field label="Descripción corta" full>
@@ -273,7 +273,7 @@ export default function PerfilForm({
           </div>
         </div>
 
-        <div className="rounded-3xl border border-brand-100 bg-white p-6 shadow-card">
+        <div className="rounded-4xl border border-brand-100 bg-white p-6 shadow-card">
           <h3 className="mb-4 text-sm font-semibold text-brand-800">Datos de contacto</h3>
           <p className="mb-4 text-xs text-brand-500">
             Las familias usarán el formulario de contacto. Estos datos solo se muestran si decides incluirlos.
@@ -299,7 +299,7 @@ export default function PerfilForm({
 }
 
 const inputClass =
-  "w-full rounded-xl border border-brand-100 bg-cream px-4 py-2.5 text-sm text-brand-900 placeholder:text-brand-400 focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-200";
+  "w-full rounded-xl border border-brand-200 bg-cream/60 px-4 py-2.5 text-sm text-brand-900 placeholder:text-brand-400 transition focus:border-brand-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-200/70";
 
 function Field({
   label,

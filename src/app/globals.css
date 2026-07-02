@@ -3,53 +3,136 @@
 @tailwind utilities;
 
 :root {
-  --background: #fbf8f3;
-  --foreground: #1f3f3b;
+  --background: #faf8f3; /* hueso claro */
+  --surface: #ffffff;
+  --foreground: #1b2b24; /* verde bosque casi negro */
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  -webkit-font-smoothing: antialiased;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  /* Titulares con la serif premium; el cuerpo mantiene la sans */
+  h1,
+  h2 {
+    @apply font-serif tracking-tight;
+  }
+  /* Foco visible y accesible en todo el sitio */
+  :where(a, button, input, select, textarea):focus-visible {
+    @apply outline-none ring-2 ring-gold-400/70 ring-offset-2 ring-offset-cream;
+  }
+  ::selection {
+    background: #e6d1a0; /* gold-200 */
+    color: #1b2b24;
+  }
 }
 
 @layer components {
+  /* ── Botones ─────────────────────────────────────────────── */
   .btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-all duration-200;
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold tracking-tight transition-all duration-200 ease-out disabled:cursor-not-allowed;
   }
+  /* Primario: verde profundo sólido */
   .btn-primary {
-    @apply btn bg-brand-500 text-white shadow-soft hover:bg-brand-600 hover:-translate-y-0.5;
+    @apply btn bg-brand-800 text-white shadow-card hover:bg-brand-900 hover:-translate-y-0.5 hover:shadow-lift;
   }
+  /* Secundario: borde fino, fondo claro */
   .btn-secondary {
-    @apply btn bg-white text-brand-700 ring-1 ring-brand-200 hover:bg-brand-50;
+    @apply btn border border-brand-200 bg-white/80 text-brand-800 hover:border-brand-300 hover:bg-brand-50 hover:-translate-y-0.5;
   }
+  /* CTA estrella: acento dorado champán */
+  .btn-gold {
+    @apply btn bg-gradient-to-b from-gold-400 to-gold-500 text-brand-900 shadow-gold ring-1 ring-inset ring-gold-300/60 hover:-translate-y-0.5 hover:brightness-[1.04] hover:shadow-lift;
+  }
+  /* Heredado, sin uso activo — se mantiene coherente por si acaso */
   .btn-sky {
-    @apply btn bg-sky-500 text-white shadow-soft hover:bg-sky-600 hover:-translate-y-0.5;
+    @apply btn bg-sky-500 text-white shadow-card hover:bg-sky-600 hover:-translate-y-0.5;
   }
+
   .container-page {
     @apply mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8;
   }
+
+  /* ── Badge "Destacado" dorado y fino ─────────────────────── */
+  .badge-gold {
+    @apply inline-flex items-center gap-1.5 rounded-full border border-gold-300/80 bg-gradient-to-r from-gold-100 to-gold-200 px-3 py-1 text-xs font-semibold tracking-tight text-gold-700 shadow-sm;
+  }
+
+  /* ── Eyebrow / etiqueta superior ─────────────────────────── */
+  .eyebrow {
+    @apply inline-flex items-center gap-2 rounded-full border border-brand-100 bg-white/70 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-brand-600 shadow-sm;
+  }
+
+  /* ── Enlace con subrayado animado (navegación) ───────────── */
+  .link-underline {
+    @apply relative transition-colors duration-200 hover:text-brand-900;
+  }
+  .link-underline::after {
+    content: "";
+    @apply absolute -bottom-1 left-0 h-px w-full origin-right scale-x-0 bg-gold-400 transition-transform duration-300 ease-out;
+  }
+  .link-underline:hover::after {
+    @apply origin-left scale-x-100;
+  }
 }
 
-/* Tipografía de las páginas legales */
+/* ── Aparición al hacer scroll (fade-in + leve subida) ─────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Respeto total a quien prefiere menos movimiento */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* ── Tipografía de las páginas legales (lectura cómoda) ────── */
+.legal-content {
+  @apply text-[15px] leading-[1.85] text-brand-600;
+}
 .legal-content h2 {
-  @apply mt-8 text-xl font-bold text-brand-900;
+  @apply mt-10 font-serif text-2xl font-semibold text-brand-900;
 }
 .legal-content h3 {
-  @apply mt-6 text-base font-semibold text-brand-800;
+  @apply mt-7 text-base font-semibold text-brand-800;
 }
 .legal-content p {
-  @apply leading-relaxed;
+  @apply leading-[1.85];
 }
 .legal-content ul {
-  @apply list-disc space-y-1.5 pl-6;
+  @apply list-disc space-y-2 pl-6 marker:text-gold-400;
 }
 .legal-content a {
-  @apply text-brand-600 underline;
+  @apply font-medium text-brand-700 underline decoration-gold-300 underline-offset-2 hover:text-brand-900;
 }
 .legal-content strong {
   @apply font-semibold text-brand-900;

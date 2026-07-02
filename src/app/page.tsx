@@ -1,5 +1,6 @@
 import Link from "next/link";
 import SearchBar from "@/components/SearchBar";
+import Reveal from "@/components/Reveal";
 import { TIPO_CUIDADO_LABEL, PLANES } from "@/lib/types";
 
 const TIPOS = [
@@ -43,25 +44,26 @@ export default function HomePage() {
     <>
       {/* ───────────── HERO ───────────── */}
       <section className="relative overflow-hidden">
-        <div className="pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full bg-brand-100/60 blur-3xl" />
-        <div className="pointer-events-none absolute -left-24 top-40 h-72 w-72 rounded-full bg-sky-100/50 blur-3xl" />
+        <div className="pointer-events-none absolute -right-32 -top-40 h-96 w-96 rounded-full bg-brand-100/70 blur-3xl" />
+        <div className="pointer-events-none absolute -left-24 top-52 h-72 w-72 rounded-full bg-gold-100/50 blur-3xl" />
 
-        <div className="container-page relative grid items-center gap-12 py-16 lg:grid-cols-2 lg:py-24">
-          <div>
-            <span className="inline-flex items-center gap-2 rounded-full bg-brand-100 px-4 py-1.5 text-sm font-medium text-brand-700">
-              ✨ Cuidado de confianza, cerca de ti
-            </span>
-            <h1 className="mt-5 text-4xl font-extrabold leading-tight tracking-tight text-brand-900 sm:text-5xl">
-              Encuentra a la persona{" "}
-              <span className="text-brand-500">ideal para cuidar</span> de quien
-              más quieres
+        <div className="container-page relative grid items-center gap-14 py-20 lg:grid-cols-2 lg:py-28">
+          <Reveal>
+            <span className="eyebrow">Cuidado de confianza, cerca de ti</span>
+            <h1 className="mt-6 font-serif text-[2.75rem] font-semibold leading-[1.05] text-brand-900 sm:text-6xl">
+              La persona{" "}
+              <span className="relative whitespace-nowrap text-brand-700">
+                ideal
+                <span className="absolute -bottom-1 left-0 h-[3px] w-full rounded-full bg-gold-400/80" />
+              </span>{" "}
+              para cuidar de quien más quieres
             </h1>
-            <p className="mt-5 max-w-lg text-lg text-brand-600">
+            <p className="mt-6 max-w-lg text-lg leading-relaxed text-brand-600">
               Conectamos familias con cuidadores y cuidadoras de niños, mayores y
               personas dependientes. Buscar y contactar es gratis.
             </p>
 
-            <div className="mt-8 flex flex-wrap gap-3">
+            <div className="mt-9 flex flex-wrap gap-3">
               <Link href="/buscar" className="btn-primary">
                 Busco cuidador/a
               </Link>
@@ -70,23 +72,29 @@ export default function HomePage() {
               </Link>
             </div>
 
-            <div className="mt-8 flex items-center gap-6 text-sm text-brand-500">
+            <div className="mt-9 flex flex-wrap items-center gap-x-7 gap-y-2 text-sm text-brand-500">
               <span className="flex items-center gap-2">
-                <span className="text-brand-500">✓</span> Registro gratis
+                <CheckMark /> Registro gratis
               </span>
               <span className="flex items-center gap-2">
-                <span className="text-brand-500">✓</span> Sin comisiones a familias
+                <CheckMark /> Sin comisiones a familias
+              </span>
+              <span className="flex items-center gap-2">
+                <CheckMark /> Perfiles verificables
               </span>
             </div>
-          </div>
+          </Reveal>
 
           {/* Tarjeta visual del hero */}
-          <div className="relative">
-            <div className="rounded-3xl border border-brand-100 bg-white p-6 shadow-soft">
-              <div className="mb-4 flex items-center justify-between">
-                <h3 className="font-semibold text-brand-800">Cuidadores destacados</h3>
-                <span className="rounded-full bg-amber-100 px-3 py-1 text-xs font-semibold text-amber-700">
-                  ⭐ Destacado
+          <Reveal delay={120} className="relative">
+            <div className="absolute -inset-4 -z-10 rounded-[2.5rem] bg-gradient-to-tr from-brand-100/60 to-gold-100/40 blur-2xl" />
+            <div className="rounded-4xl border border-brand-100 bg-white/90 p-6 shadow-soft backdrop-blur">
+              <div className="mb-5 flex items-center justify-between">
+                <h3 className="font-serif text-lg font-semibold text-brand-900">
+                  Cuidadores destacados
+                </h3>
+                <span className="badge-gold">
+                  <StarIcon /> Destacado
                 </span>
               </div>
               <ul className="space-y-3">
@@ -97,137 +105,186 @@ export default function HomePage() {
                 ].map((c) => (
                   <li
                     key={c.n}
-                    className="flex items-center gap-3 rounded-2xl border border-brand-50 bg-cream/60 p-3"
+                    className="flex items-center gap-3.5 rounded-2xl border border-brand-50 bg-cream/70 p-3.5 transition-colors hover:border-brand-100"
                   >
-                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-brand-100 text-lg font-semibold text-brand-600">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-brand-100 font-serif text-lg font-semibold text-brand-700">
                       {c.n.charAt(0)}
                     </div>
                     <div className="flex-1">
                       <p className="text-sm font-semibold text-brand-800">{c.n}</p>
                       <p className="text-xs text-brand-500">{c.z} · {c.t}</p>
                     </div>
-                    <span className="text-sm font-semibold text-brand-600">{c.p}</span>
+                    <span className="text-sm font-semibold text-brand-700">{c.p}</span>
                   </li>
                 ))}
               </ul>
             </div>
-          </div>
+          </Reveal>
         </div>
 
         {/* Buscador */}
-        <div className="container-page relative -mt-4 pb-6">
+        <div className="container-page relative -mt-2 pb-10">
           <SearchBar />
         </div>
       </section>
 
       {/* ───────────── TIPOS DE CUIDADO ───────────── */}
-      <section className="container-page py-16">
-        <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-bold text-brand-900">¿Qué tipo de cuidado necesitas?</h2>
-          <p className="mt-3 text-brand-600">
+      <section className="container-page py-20">
+        <Reveal className="mx-auto max-w-2xl text-center">
+          <span className="eyebrow">Áreas de cuidado</span>
+          <h2 className="mt-5 text-3xl font-semibold text-brand-900 sm:text-4xl">
+            ¿Qué tipo de cuidado necesitas?
+          </h2>
+          <p className="mt-4 text-brand-600">
             Profesionales preparados para cada situación familiar.
           </p>
-        </div>
+        </Reveal>
 
-        <div className="mt-10 grid gap-6 sm:grid-cols-3">
-          {TIPOS.map((t) => (
-            <Link
-              key={t.key}
-              href={`/buscar?tipo=${t.key}`}
-              className="group rounded-3xl border border-brand-100 bg-white p-7 shadow-card transition-all hover:-translate-y-1 hover:shadow-soft"
-            >
-              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-50 text-2xl">
-                {t.emoji}
-              </div>
-              <h3 className="mt-5 text-lg font-semibold text-brand-800">
-                {TIPO_CUIDADO_LABEL[t.key]}
-              </h3>
-              <p className="mt-2 text-sm text-brand-600">{t.desc}</p>
-              <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-brand-500 group-hover:gap-2">
-                Ver cuidadores →
-              </span>
-            </Link>
+        <div className="mt-12 grid gap-6 sm:grid-cols-3">
+          {TIPOS.map((t, i) => (
+            <Reveal key={t.key} delay={i * 90}>
+              <Link
+                href={`/buscar?tipo=${t.key}`}
+                className="group flex h-full flex-col rounded-4xl border border-brand-100 bg-white p-8 shadow-card transition-all duration-300 hover:-translate-y-1.5 hover:border-brand-200 hover:shadow-lift"
+              >
+                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-50 text-2xl ring-1 ring-brand-100/80 transition-colors group-hover:bg-gold-50">
+                  {t.emoji}
+                </div>
+                <h3 className="mt-6 font-serif text-xl font-semibold text-brand-900">
+                  {TIPO_CUIDADO_LABEL[t.key]}
+                </h3>
+                <p className="mt-2 flex-1 text-sm leading-relaxed text-brand-600">{t.desc}</p>
+                <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-700 transition-all group-hover:gap-2.5">
+                  Ver cuidadores
+                  <span className="text-gold-500">→</span>
+                </span>
+              </Link>
+            </Reveal>
           ))}
         </div>
       </section>
 
       {/* ───────────── CÓMO FUNCIONA ───────────── */}
-      <section className="bg-white py-16">
+      <section className="border-y border-brand-100 bg-white py-20">
         <div className="container-page">
-          <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-bold text-brand-900">Cómo funciona</h2>
-            <p className="mt-3 text-brand-600">
+          <Reveal className="mx-auto max-w-2xl text-center">
+            <span className="eyebrow">Sencillo y gratuito</span>
+            <h2 className="mt-5 text-3xl font-semibold text-brand-900 sm:text-4xl">
+              Cómo funciona
+            </h2>
+            <p className="mt-4 text-brand-600">
               Para las familias, encontrar cuidado es sencillo y gratuito.
             </p>
-          </div>
+          </Reveal>
 
-          <div className="mt-12 grid gap-8 md:grid-cols-3">
-            {PASOS.map((p) => (
-              <div key={p.n} className="relative rounded-3xl bg-cream p-7">
-                <span className="flex h-11 w-11 items-center justify-center rounded-full bg-brand-500 text-lg font-bold text-white">
-                  {p.n}
-                </span>
-                <h3 className="mt-5 text-lg font-semibold text-brand-800">{p.titulo}</h3>
-                <p className="mt-2 text-sm text-brand-600">{p.desc}</p>
-              </div>
+          <div className="mt-14 grid gap-8 md:grid-cols-3">
+            {PASOS.map((p, i) => (
+              <Reveal key={p.n} delay={i * 90} className="relative">
+                <div className="h-full rounded-4xl bg-cream p-8 ring-1 ring-brand-100/70">
+                  <span className="flex h-12 w-12 items-center justify-center rounded-full bg-brand-800 font-serif text-lg font-semibold text-white shadow-card">
+                    {p.n}
+                  </span>
+                  <h3 className="mt-6 font-serif text-xl font-semibold text-brand-900">{p.titulo}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-brand-600">{p.desc}</p>
+                </div>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
       {/* ───────────── PARA CUIDADORES / DESTACAR ───────────── */}
-      <section className="container-page py-16">
-        <div className="overflow-hidden rounded-3xl bg-gradient-to-br from-brand-600 to-brand-500 p-8 text-white sm:p-12">
-          <div className="grid items-center gap-10 lg:grid-cols-2">
-            <div>
-              <h2 className="text-3xl font-bold">¿Eres cuidador o cuidadora?</h2>
-              <p className="mt-4 max-w-md text-brand-50">
-                Crea tu perfil <strong>gratis</strong> y empieza a recibir solicitudes
-                de familias. ¿Quieres más visibilidad? Destaca tu perfil y aparece en
-                primera fila del listado.
-              </p>
-              <div className="mt-7 flex flex-wrap gap-3">
-                <Link href="/registro" className="btn bg-white text-brand-700 hover:bg-brand-50">
-                  Crear perfil gratis
-                </Link>
-                <Link href="/destacar" className="btn bg-brand-700/40 text-white ring-1 ring-white/40 hover:bg-brand-700/60">
-                  Ver planes de destacado
-                </Link>
+      <section className="container-page py-20">
+        <Reveal>
+          <div className="relative overflow-hidden rounded-[2.5rem] bg-brand-900 p-8 text-white shadow-soft sm:p-14">
+            <div className="pointer-events-none absolute -right-20 -top-24 h-72 w-72 rounded-full bg-brand-700/50 blur-3xl" />
+            <div className="pointer-events-none absolute -bottom-24 -left-16 h-64 w-64 rounded-full bg-gold-500/10 blur-3xl" />
+
+            <div className="relative grid items-center gap-12 lg:grid-cols-2">
+              <div>
+                <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-gold-200">
+                  Para cuidadores
+                </span>
+                <h2 className="mt-6 font-serif text-3xl font-semibold sm:text-4xl">
+                  ¿Eres cuidador o cuidadora?
+                </h2>
+                <p className="mt-5 max-w-md leading-relaxed text-brand-100">
+                  Crea tu perfil <strong className="font-semibold text-white">gratis</strong> y
+                  empieza a recibir solicitudes de familias. ¿Quieres más visibilidad?
+                  Destaca tu perfil y aparece en primera fila del listado.
+                </p>
+                <div className="mt-8 flex flex-wrap gap-3">
+                  <Link href="/registro" className="btn bg-white text-brand-900 hover:-translate-y-0.5 hover:bg-brand-50">
+                    Crear perfil gratis
+                  </Link>
+                  <Link
+                    href="/destacar"
+                    className="btn border border-white/25 bg-white/5 text-white hover:-translate-y-0.5 hover:bg-white/10"
+                  >
+                    Ver planes de destacado
+                  </Link>
+                </div>
+              </div>
+
+              <div className="grid gap-4 sm:grid-cols-2">
+                {Object.values(PLANES).map((plan) => (
+                  <div
+                    key={plan.id}
+                    className="rounded-4xl border border-white/10 bg-white/[0.07] p-6 backdrop-blur transition-colors hover:border-gold-300/30"
+                  >
+                    <p className="text-sm font-medium text-brand-100">{plan.nombre}</p>
+                    <p className="mt-2 font-serif text-4xl font-semibold text-white">
+                      {plan.precioLabel}
+                    </p>
+                    <p className="mt-1 text-xs text-brand-200">{plan.descripcion}</p>
+                    <p className="badge-gold mt-4">
+                      <StarIcon /> {plan.dias} días destacado
+                    </p>
+                  </div>
+                ))}
               </div>
             </div>
-
-            <div className="grid gap-4 sm:grid-cols-2">
-              {Object.values(PLANES).map((plan) => (
-                <div key={plan.id} className="rounded-2xl bg-white/10 p-6 ring-1 ring-white/20 backdrop-blur">
-                  <p className="text-sm font-medium text-brand-50">{plan.nombre}</p>
-                  <p className="mt-2 text-3xl font-extrabold">{plan.precioLabel}</p>
-                  <p className="mt-1 text-xs text-brand-100">{plan.descripcion}</p>
-                  <p className="mt-3 inline-flex rounded-full bg-amber-300/90 px-3 py-1 text-xs font-semibold text-amber-900">
-                    ⭐ Badge destacado · {plan.dias} días
-                  </p>
-                </div>
-              ))}
-            </div>
           </div>
-        </div>
+        </Reveal>
       </section>
 
       {/* ───────────── CTA FINAL ───────────── */}
-      <section className="container-page pb-8">
-        <div className="rounded-3xl border border-brand-100 bg-white p-10 text-center shadow-card">
-          <h2 className="text-2xl font-bold text-brand-900">
-            Empieza hoy a encontrar el cuidado que tu familia necesita
-          </h2>
-          <p className="mx-auto mt-3 max-w-xl text-brand-600">
-            Sin registro para buscar. Sin comisiones para las familias. Con
-            cuidadores reales cerca de ti.
-          </p>
-          <div className="mt-6 flex flex-wrap justify-center gap-3">
-            <Link href="/buscar" className="btn-primary">Buscar cuidador/a</Link>
-            <Link href="/registro" className="btn-secondary">Soy cuidador/a</Link>
+      <section className="container-page pb-12">
+        <Reveal>
+          <div className="relative overflow-hidden rounded-[2.5rem] border border-brand-100 bg-white p-12 text-center shadow-card">
+            <span className="mx-auto block h-px w-16 bg-gold-400" />
+            <h2 className="mt-6 font-serif text-3xl font-semibold text-brand-900">
+              Empieza hoy a encontrar el cuidado que tu familia necesita
+            </h2>
+            <p className="mx-auto mt-4 max-w-xl leading-relaxed text-brand-600">
+              Sin registro para buscar. Sin comisiones para las familias. Con
+              cuidadores reales cerca de ti.
+            </p>
+            <div className="mt-8 flex flex-wrap justify-center gap-3">
+              <Link href="/buscar" className="btn-primary">Buscar cuidador/a</Link>
+              <Link href="/registro" className="btn-secondary">Soy cuidador/a</Link>
+            </div>
           </div>
-        </div>
+        </Reveal>
       </section>
     </>
+  );
+}
+
+function CheckMark() {
+  return (
+    <span className="flex h-5 w-5 items-center justify-center rounded-full bg-brand-100 text-brand-700">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden>
+        <path d="M5 13l4 4L19 7" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    </span>
+  );
+}
+
+function StarIcon() {
+  return (
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+      <path d="M12 2l2.9 6.26L21.6 9l-4.8 4.68L18 21l-6-3.2L6 21l1.2-7.32L2.4 9l6.7-.74L12 2z" />
+    </svg>
   );
 }

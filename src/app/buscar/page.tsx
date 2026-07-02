@@ -57,14 +57,15 @@ export default async function BuscarPage({
   const hayFiltros = Boolean(zona || tipo || tarifaMaxRaw || disponibilidad);
 
   return (
-    <section className="container-page py-10">
-      <div className="mb-6">
-        <h1 className="text-3xl font-bold text-brand-900">
+    <section className="container-page py-12">
+      <div className="mb-8">
+        <span className="eyebrow">Directorio de cuidadores</span>
+        <h1 className="mt-4 text-4xl font-semibold text-brand-900">
           {tipo ? `Cuidadores de ${TIPO_CUIDADO_LABEL[tipo].toLowerCase()}` : "Encuentra a tu cuidador/a"}
         </h1>
-        <p className="mt-2 text-brand-600">
+        <p className="mt-3 max-w-2xl text-brand-600">
           Busca y contacta gratis, sin registro. Los perfiles{" "}
-          <span className="font-semibold text-amber-600">⭐ destacados</span> aparecen primero.
+          <span className="font-semibold text-gold-600">destacados</span> aparecen primero.
         </p>
       </div>
 
@@ -115,11 +116,11 @@ function EstadoVacio({
   mostrarReset?: boolean;
 }) {
   return (
-    <div className="rounded-3xl border border-dashed border-brand-200 bg-white/60 px-6 py-16 text-center">
-      <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-brand-50 text-3xl">
+    <div className="rounded-4xl border border-dashed border-brand-200 bg-white/60 px-6 py-20 text-center">
+      <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-brand-50 text-3xl ring-1 ring-brand-100">
         🔎
       </div>
-      <h2 className="mt-5 text-xl font-semibold text-brand-800">{titulo}</h2>
+      <h2 className="mt-6 font-serif text-2xl font-semibold text-brand-900">{titulo}</h2>
       <p className="mx-auto mt-2 max-w-md text-sm text-brand-600">{texto}</p>
       {mostrarReset && (
         <Link href="/buscar" className="btn-primary mt-6 text-sm">

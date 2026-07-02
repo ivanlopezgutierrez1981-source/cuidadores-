@@ -68,11 +68,11 @@ export default function ContactForm({
 
   if (enviado) {
     return (
-      <div className="rounded-2xl bg-brand-50 p-6 text-center">
+      <div className="rounded-2xl bg-brand-50 p-6 text-center ring-1 ring-brand-100">
         <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-brand-100 text-2xl">
           ✅
         </div>
-        <h3 className="mt-4 text-lg font-semibold text-brand-800">¡Tu mensaje se ha enviado!</h3>
+        <h3 className="mt-4 font-serif text-xl font-semibold text-brand-900">¡Tu mensaje se ha enviado!</h3>
         <p className="mt-2 text-sm text-brand-600">
           {nombreCuidador} recibirá tu solicitud y se pondrá en contacto contigo.
         </p>
@@ -140,4 +140,4 @@ export default function ContactForm({
 }
 
 const inputClass =
-  "w-full rounded-xl border border-brand-100 bg-cream px-4 py-2.5 text-sm text-brand-900 placeholder:text-brand-400 focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-200";
+  "w-full rounded-xl border border-brand-200 bg-cream/60 px-4 py-2.5 text-sm text-brand-900 placeholder:text-brand-400 transition focus:border-brand-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-200/70";

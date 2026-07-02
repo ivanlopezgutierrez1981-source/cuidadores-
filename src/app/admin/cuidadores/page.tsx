@@ -42,7 +42,7 @@ export default async function AdminCuidadores({
     <div>
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-brand-900">Cuidadores</h1>
+          <h1 className="text-3xl font-semibold text-brand-900">Cuidadores</h1>
           <p className="mt-1 text-sm text-brand-600">{cuidadores.length} resultados</p>
         </div>
         <form className="flex gap-2">
@@ -107,8 +107,8 @@ export default async function AdminCuidadores({
                     <td className="px-4 py-3 text-brand-600">{TIPO_CUIDADO_LABEL[c.tipo_cuidado]}</td>
                     <td className="px-4 py-3">
                       {dest ? (
-                        <span className="inline-flex items-center gap-1 rounded-full bg-amber-100 px-2.5 py-0.5 text-xs font-semibold text-amber-700">
-                          ⭐ {diasRestantes(c.destacado_hasta)}d
+                        <span className="inline-flex items-center gap-1 rounded-full border border-gold-300/80 bg-gold-100 px-2.5 py-0.5 text-xs font-semibold text-gold-700">
+                          ★ {diasRestantes(c.destacado_hasta)}d
                         </span>
                       ) : (
                         <span className="text-xs text-brand-400">No</span>
