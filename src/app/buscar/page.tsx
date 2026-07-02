@@ -59,8 +59,7 @@ export default async function BuscarPage({
   return (
     <section className="container-page py-12">
       <div className="mb-8">
-        <span className="eyebrow">Directorio de cuidadores</span>
-        <h1 className="mt-4 text-4xl font-semibold text-brand-900">
+        <h1 className="text-4xl font-semibold text-brand-900">
           {tipo ? `Cuidadores de ${TIPO_CUIDADO_LABEL[tipo].toLowerCase()}` : "Encuentra a tu cuidador/a"}
         </h1>
         <p className="mt-3 max-w-2xl text-brand-600">

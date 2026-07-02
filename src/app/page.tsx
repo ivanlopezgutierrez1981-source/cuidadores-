@@ -50,8 +50,7 @@ export default function HomePage() {
 
         <div className="container-page relative grid items-center gap-14 py-20 lg:grid-cols-2 lg:py-28">
           <Reveal>
-            <span className="eyebrow">Cuidado de confianza, cerca de ti</span>
-            <h1 className="mt-6 font-serif text-[2.75rem] font-semibold leading-[1.05] text-brand-900 sm:text-6xl">
+            <h1 className="font-serif text-[2.75rem] font-semibold leading-[1.05] text-brand-900 sm:text-6xl">
               La persona <span className="italic text-brand-500">ideal</span> para
               cuidar de quien más quieres
             </h1>
@@ -108,8 +107,7 @@ export default function HomePage() {
       {/* ───────────── TIPOS DE CUIDADO ───────────── */}
       <section className="container-page py-20">
         <Reveal className="mx-auto max-w-2xl text-center">
-          <span className="eyebrow">Áreas de cuidado</span>
-          <h2 className="mt-5 text-3xl font-semibold text-brand-900 sm:text-4xl">
+          <h2 className="text-3xl font-semibold text-brand-900 sm:text-4xl">
             ¿Qué tipo de cuidado necesitas?
           </h2>
           <p className="mt-4 text-brand-600">
@@ -145,8 +143,7 @@ export default function HomePage() {
       <section className="border-y border-brand-100 bg-white py-20">
         <div className="container-page">
           <Reveal className="mx-auto max-w-2xl text-center">
-            <span className="eyebrow">Sencillo y gratuito</span>
-            <h2 className="mt-5 text-3xl font-semibold text-brand-900 sm:text-4xl">
+            <h2 className="text-3xl font-semibold text-brand-900 sm:text-4xl">
               Cómo funciona
             </h2>
             <p className="mt-4 text-brand-600">

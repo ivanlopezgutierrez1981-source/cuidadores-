@@ -85,8 +85,7 @@ export default function ComoFuncionaPage() {
 
         <div className="container-page relative py-16 lg:py-20">
           <Reveal className="mx-auto max-w-2xl text-center">
-            <span className="eyebrow">Cómo funciona</span>
-            <h1 className="mt-6 font-serif text-4xl font-semibold leading-tight text-brand-900 sm:text-5xl">
+            <h1 className="font-serif text-4xl font-semibold leading-tight text-brand-900 sm:text-5xl">
               Cuidado de confianza, en tres pasos
             </h1>
             <p className="mt-5 text-lg leading-relaxed text-brand-600">
@@ -124,8 +123,7 @@ export default function ComoFuncionaPage() {
       <section className="border-y border-brand-100 bg-white py-20">
         <div className="container-page">
           <Reveal className="mx-auto max-w-2xl text-center">
-            <span className="eyebrow">Para familias</span>
-            <h2 className="mt-5 text-3xl font-semibold text-brand-900 sm:text-4xl">
+            <h2 className="text-3xl font-semibold text-brand-900 sm:text-4xl">
               Encontrar cuidado es sencillo y gratuito
             </h2>
           </Reveal>
@@ -155,8 +153,7 @@ export default function ComoFuncionaPage() {
       {/* ───────────── PARA CUIDADORES ───────────── */}
       <section className="container-page py-20">
         <Reveal className="mx-auto max-w-2xl text-center">
-          <span className="eyebrow">Para cuidadores</span>
-          <h2 className="mt-5 text-3xl font-semibold text-brand-900 sm:text-4xl">
+          <h2 className="text-3xl font-semibold text-brand-900 sm:text-4xl">
             Crea tu perfil y empieza a recibir solicitudes
           </h2>
         </Reveal>
@@ -210,8 +207,7 @@ export default function ComoFuncionaPage() {
       <section className="border-t border-brand-100 bg-white py-20">
         <div className="container-page">
           <Reveal className="mx-auto max-w-2xl text-center">
-            <span className="eyebrow">Preguntas frecuentes</span>
-            <h2 className="mt-5 text-3xl font-semibold text-brand-900 sm:text-4xl">
+            <h2 className="text-3xl font-semibold text-brand-900 sm:text-4xl">
               Todo lo que necesitas saber
             </h2>
           </Reveal>

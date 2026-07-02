@@ -40,10 +40,7 @@ export default async function DestacarPage() {
   return (
     <section className="container-page py-12">
       <div className="mx-auto max-w-2xl text-center">
-        <span className="badge-gold">
-          <StarIcon /> Más visibilidad, más solicitudes
-        </span>
-        <h1 className="mt-5 text-4xl font-semibold text-brand-900 sm:text-5xl">
+        <h1 className="text-4xl font-semibold text-brand-900 sm:text-5xl">
           Destaca tu perfil y aparece en primera fila
         </h1>
         <p className="mt-4 text-brand-600">
@@ -102,13 +99,5 @@ export default async function DestacarPage() {
         ))}
       </div>
     </section>
-  );
-}
-
-function StarIcon() {
-  return (
-    <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
-      <path d="M12 2l2.9 6.26L21.6 9l-4.8 4.68L18 21l-6-3.2L6 21l1.2-7.32L2.4 9l6.7-.74L12 2z" />
-    </svg>
   );
 }
