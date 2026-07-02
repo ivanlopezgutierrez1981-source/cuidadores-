@@ -5,8 +5,8 @@ export default function Footer() {
     <footer className="mt-28 border-t border-brand-100 bg-white">
       <div className="container-page grid gap-10 py-16 sm:grid-cols-2 lg:grid-cols-4">
         <div className="max-w-xs">
-          <span className="font-serif text-xl font-semibold tracking-tight text-brand-900">
-            cuidadores<span className="text-gold-500">.xyz</span>
+          <span className="text-xl font-bold tracking-tight text-brand-900">
+            cuidadores<span className="text-brand-500">.xyz</span>
           </span>
           <p className="mt-4 text-sm leading-relaxed text-brand-600">
             Conectamos familias con cuidadores y cuidadoras de confianza para

@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 :root {
-  --background: #faf8f3; /* hueso claro */
+  --background: #fdfaf5; /* blanco cálido */
   --surface: #ffffff;
-  --foreground: #1b2b24; /* verde bosque casi negro */
+  --foreground: #1a3530; /* verde profundo (overlay de marca) */
 }
 
 @layer base {
@@ -17,19 +17,21 @@
     color: var(--foreground);
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+    /* DM Serif Display solo tiene peso 400: evitamos el negrita falso */
+    font-synthesis: none;
   }
-  /* Titulares con la serif premium; el cuerpo mantiene la sans */
+  /* Titulares con la serif de marca (DM Serif Display); cuerpo en DM Sans */
   h1,
   h2 {
     @apply font-serif tracking-tight;
   }
   /* Foco visible y accesible en todo el sitio */
   :where(a, button, input, select, textarea):focus-visible {
-    @apply outline-none ring-2 ring-gold-400/70 ring-offset-2 ring-offset-cream;
+    @apply outline-none ring-2 ring-brand-500/70 ring-offset-2 ring-offset-cream;
   }
   ::selection {
-    background: #e6d1a0; /* gold-200 */
-    color: #1b2b24;
+    background: #e2c9a8; /* tierra-200 */
+    color: #1a3530;
   }
 }
 
@@ -38,9 +40,9 @@
   .btn {
     @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold tracking-tight transition-all duration-200 ease-out disabled:cursor-not-allowed;
   }
-  /* Primario: verde profundo sólido */
+  /* Primario: verde salvia sólido */
   .btn-primary {
-    @apply btn bg-brand-800 text-white shadow-card hover:bg-brand-900 hover:-translate-y-0.5 hover:shadow-lift;
+    @apply btn bg-brand-600 text-white shadow-card hover:bg-brand-700 hover:-translate-y-0.5 hover:shadow-lift;
   }
   /* Secundario: borde fino, fondo claro */
   .btn-secondary {

@@ -11,7 +11,7 @@ export default async function Header() {
     <header className="sticky top-0 z-40 border-b border-brand-100/70 bg-cream/85 backdrop-blur-md">
       <div className="container-page flex h-[70px] items-center justify-between">
         <Link href="/" className="group flex items-center gap-2.5">
-          <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-brand-800 text-white shadow-card ring-1 ring-inset ring-white/10 transition-transform duration-200 group-hover:-translate-y-0.5">
+          <span className="flex h-9 w-9 items-center justify-center rounded-2xl bg-brand-500 text-white shadow-card ring-1 ring-inset ring-white/10 transition-transform duration-200 group-hover:-translate-y-0.5">
             {/* corazón / cuidado */}
             <svg width="19" height="19" viewBox="0 0 24 24" fill="none" aria-hidden>
               <path
@@ -20,8 +20,8 @@ export default async function Header() {
               />
             </svg>
           </span>
-          <span className="font-serif text-xl font-semibold tracking-tight text-brand-900">
-            cuidadores<span className="text-gold-500">.xyz</span>
+          <span className="text-xl font-bold tracking-tight text-brand-900">
+            cuidadores<span className="text-brand-500">.xyz</span>
           </span>
         </Link>
 

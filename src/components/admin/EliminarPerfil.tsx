@@ -25,7 +25,7 @@ export default function EliminarPerfil({
       <input type="hidden" name="profileId" value={profileId} />
       <button
         type="submit"
-        className="rounded-lg bg-red-50 px-3 py-1.5 text-xs font-semibold text-red-700 hover:bg-red-100"
+        className="rounded-lg bg-coral-50 px-3 py-1.5 text-xs font-semibold text-coral-600 hover:bg-coral-100"
       >
         Eliminar
       </button>

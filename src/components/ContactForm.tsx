@@ -83,7 +83,7 @@ export default function ContactForm({
   return (
     <form onSubmit={onSubmit} className="space-y-4">
       {error && (
-        <div className="rounded-xl bg-red-50 px-4 py-3 text-sm text-red-700">{error}</div>
+        <div className="rounded-xl bg-coral-50 px-4 py-3 text-sm text-coral-600">{error}</div>
       )}
 
       <div className="grid gap-4 sm:grid-cols-2">

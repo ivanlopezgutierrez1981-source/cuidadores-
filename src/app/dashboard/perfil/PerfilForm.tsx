@@ -199,7 +199,7 @@ export default function PerfilForm({
           </div>
         )}
         {error && (
-          <div className="rounded-2xl bg-red-50 px-4 py-3 text-sm text-red-700">{error}</div>
+          <div className="rounded-2xl bg-coral-50 px-4 py-3 text-sm text-coral-600">{error}</div>
         )}
 
         <div className="rounded-4xl border border-brand-100 bg-white p-6 shadow-card">

@@ -10,65 +10,63 @@ const config: Config = {
     extend: {
       colors: {
         /* ─────────────────────────────────────────────────────────
-           MARCA — Verde profundo bosque / petróleo.
-           Tonos medios desaturados y cálidos (grises verdosos) para
-           que sirvan como texto de cuerpo; extremos oscuros para
-           titulares y botones primarios; claros para fondos y bordes.
+           MARCA — Verde teal / salvia (Brand Guide 1.0).
+           "El verde como señal de vida y cuidado." Vivo en 500 para
+           logo/acentos, salvia en 600 para cuerpo y botón primario,
+           profundo en 700-900 para titulares y fondos oscuros.
            ───────────────────────────────────────────────────────── */
         brand: {
-          50: "#f4f7f5",
-          100: "#e5ece8",
-          200: "#c9d8d0",
-          300: "#a3bcb0",
-          400: "#74968a", // muted / placeholders
-          500: "#517263", // acentos, iconos
-          600: "#3f5a4e", // texto de cuerpo (gris cálido verdoso)
-          700: "#314a3f", // texto fuerte / navegación
-          800: "#263b32", // botón primario (verde profundo)
-          900: "#1b2b24", // titulares (casi negro bosque)
+          50: "#eaf4f0",
+          100: "#d3e8e1",
+          200: "#aed6ca",
+          300: "#82bbac",
+          400: "#4ba394", // verde claro
+          500: "#2d8a79", // verde principal (logo, .xyz, acentos, enlaces)
+          600: "#2f6f5f", // salvia — texto de cuerpo y botón primario
+          700: "#1f5748", // verde profundo (hover, texto fuerte)
+          800: "#17463a",
+          900: "#1a3530", // titulares / fondos oscuros (overlay de marca)
         },
-        /* ACENTO PREMIUM — Dorado tenue / champán. Úsese con moderación:
-           CTA estrella, badges de "Destacado", líneas de acento. */
+        /* ACENTO CÁLIDO — Tierra / caramelo. "Tierra para calidez."
+           Badges de Destacado/Premium, líneas de acento, CTA estrella.
+           (Mantiene el nombre `gold` por compatibilidad de clases.) */
         gold: {
-          50: "#faf6ea",
-          100: "#f2e7c9",
-          200: "#e6d1a0",
-          300: "#d7b878",
-          400: "#c9a961", // champán principal
-          500: "#b8935a",
-          600: "#9a7947",
-          700: "#786037",
+          50: "#f7efe4",
+          100: "#efe0cc",
+          200: "#e2c9a8",
+          300: "#d3ac7f",
+          400: "#c4956a", // tierra
+          500: "#b07f52",
+          600: "#946843",
+          700: "#6f4e33",
         },
-        /* Azul suave heredado — apenas usado, se mantiene por compatibilidad */
-        sky: {
-          50: "#f0f7fb",
-          100: "#dceef6",
-          200: "#bcdeee",
-          300: "#8ec5e0",
-          400: "#59a6cd",
-          500: "#3889b6",
-          600: "#2c6e98",
-          700: "#27597b",
-          800: "#254b66",
-          900: "#234057",
+        /* ACENTO CORAL — Destructivo / errores / puntos de energía. */
+        coral: {
+          50: "#fdeeeb",
+          100: "#f9d6cf",
+          200: "#f2ab9e",
+          300: "#e58270",
+          400: "#d05a4a", // coral principal
+          500: "#bd4636",
+          600: "#9e3729",
+          700: "#7c2c22",
         },
         /* Fondos crema / hueso */
-        cream: "#faf8f3", // fondo de página (hueso claro)
-        bone: "#f3efe6", // sección alterna, un punto más profundo
+        cream: "#fdfaf5", // blanco cálido (fondo de página)
+        bone: "#ede8df", // beige (sección alterna)
       },
       fontFamily: {
-        // Cuerpo: sans limpia y legible
-        sans: ["var(--font-inter)", "system-ui", "sans-serif"],
-        // Titulares: serif moderna con carácter premium
-        serif: ["var(--font-fraunces)", "Georgia", "serif"],
-        display: ["var(--font-fraunces)", "Georgia", "serif"],
+        // Cuerpo / interfaz: DM Sans
+        sans: ["var(--font-dm-sans)", "system-ui", "sans-serif"],
+        // Display / titulares: DM Serif Display
+        serif: ["var(--font-dm-serif)", "Georgia", "serif"],
+        display: ["var(--font-dm-serif)", "Georgia", "serif"],
       },
       boxShadow: {
-        // Sombras suaves y en capas (nada de sombras duras)
-        soft: "0 14px 40px -12px rgba(28,45,38,0.14), 0 4px 12px -6px rgba(28,45,38,0.08)",
-        card: "0 6px 20px -10px rgba(28,45,38,0.12), 0 2px 6px -4px rgba(28,45,38,0.06)",
-        lift: "0 24px 56px -16px rgba(28,45,38,0.22), 0 10px 24px -12px rgba(28,45,38,0.10)",
-        gold: "0 12px 32px -10px rgba(184,147,90,0.45)",
+        soft: "0 14px 40px -12px rgba(26,53,48,0.16), 0 4px 12px -6px rgba(26,53,48,0.08)",
+        card: "0 6px 20px -10px rgba(26,53,48,0.13), 0 2px 6px -4px rgba(26,53,48,0.06)",
+        lift: "0 24px 56px -16px rgba(26,53,48,0.24), 0 10px 24px -12px rgba(26,53,48,0.10)",
+        gold: "0 12px 32px -10px rgba(196,149,106,0.45)",
       },
       borderRadius: {
         "4xl": "2rem",

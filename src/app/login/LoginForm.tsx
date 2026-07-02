@@ -44,7 +44,7 @@ export default function LoginForm() {
   return (
     <form onSubmit={onSubmit} className="space-y-4">
       {error && (
-        <div className="rounded-xl bg-red-50 px-4 py-3 text-sm text-red-700">
+        <div className="rounded-xl bg-coral-50 px-4 py-3 text-sm text-coral-600">
           {error}
         </div>
       )}

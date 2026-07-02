@@ -1,22 +1,23 @@
 import type { Metadata } from "next";
-import { Inter, Fraunces } from "next/font/google";
+import { DM_Sans, DM_Serif_Display } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CookieBanner from "@/components/CookieBanner";
 
-const inter = Inter({
+// Cuerpo / interfaz — DM Sans (Brand Guide 1.0)
+const dmSans = DM_Sans({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-dm-sans",
   display: "swap",
 });
 
-// Serif moderna con carácter para los titulares (aire clínica premium)
-const fraunces = Fraunces({
+// Display / titulares — DM Serif Display (peso único 400)
+const dmSerif = DM_Serif_Display({
   subsets: ["latin"],
-  variable: "--font-fraunces",
+  variable: "--font-dm-serif",
   display: "swap",
-  weight: ["400", "500", "600", "700"],
+  weight: ["400"],
 });
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://cuidadores.xyz";
@@ -54,7 +55,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="es" className={`${inter.variable} ${fraunces.variable}`}>
+    <html lang="es" className={`${dmSans.variable} ${dmSerif.variable}`}>
       <body className="flex min-h-screen flex-col font-sans">
         <Header />
         <main className="flex-1">{children}</main>

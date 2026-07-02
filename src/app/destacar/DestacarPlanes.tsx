@@ -36,7 +36,7 @@ export default function DestacarPlanes() {
   return (
     <div className="mx-auto mt-12 max-w-3xl">
       {error && (
-        <div className="mb-6 rounded-xl bg-red-50 px-4 py-3 text-center text-sm text-red-700">
+        <div className="mb-6 rounded-xl bg-coral-50 px-4 py-3 text-center text-sm text-coral-600">
           {error}
         </div>
       )}
