@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
+import ExplainerAnimado from "@/components/ExplainerAnimado";
 import { PLANES } from "@/lib/types";
 
 export const metadata: Metadata = {
@@ -108,7 +109,7 @@ export default function ComoFuncionaPage() {
                     allowFullScreen
                   />
                 ) : (
-                  <VideoPlaceholder />
+                  <ExplainerAnimado />
                 )}
               </div>
             </div>
@@ -253,24 +254,6 @@ export default function ComoFuncionaPage() {
         </Reveal>
       </section>
     </>
-  );
-}
-
-function VideoPlaceholder() {
-  return (
-    <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 text-center">
-      <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-brand-700/40 blur-3xl" />
-      <div className="pointer-events-none absolute -bottom-16 -left-10 h-48 w-48 rounded-full bg-gold-500/10 blur-3xl" />
-      <span className="relative flex h-16 w-16 items-center justify-center rounded-full bg-white/10 ring-1 ring-white/20 backdrop-blur">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" className="ml-1 text-gold-300" aria-hidden>
-          <path d="M8 5v14l11-7z" />
-        </svg>
-      </span>
-      <p className="relative font-serif text-lg font-semibold text-white">Vídeo explicativo próximamente</p>
-      <p className="relative max-w-xs text-sm text-brand-200">
-        Aquí irá un vídeo corto mostrando cómo funciona la plataforma.
-      </p>
-    </div>
   );
 }
 

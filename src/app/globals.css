@@ -82,6 +82,18 @@
   }
 }
 
+/* Entrada de elementos del explainer animado (/como-funciona) */
+@keyframes explainerIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* ── Aparición al hacer scroll (fade-in + leve subida) ─────── */
 .reveal {
   opacity: 0;
