@@ -62,7 +62,17 @@ export default function Footer() {
       <div className="border-t border-brand-100 py-6">
         <div className="container-page flex flex-col items-center justify-between gap-2 text-xs text-brand-500 sm:flex-row">
           <p>© {new Date().getFullYear()} cuidadores.xyz · Todos los derechos reservados.</p>
-          <p>Hecho con cuidado en España 🇪🇸</p>
+          <p>
+            Desarrollada por{" "}
+            <a
+              href="https://creaar.es"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-brand-600 link-underline"
+            >
+              creaar.es
+            </a>
+          </p>
         </div>
       </div>
     </footer>
