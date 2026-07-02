@@ -95,11 +95,18 @@ create trigger profiles_set_updated_at
 -- ════════════════════════════════════════════════════════════════
 --  Vista de ayuda: ¿está un perfil destacado AHORA?
 -- ════════════════════════════════════════════════════════════════
-create or replace view public.profiles_publicos as
+-- NOTA RGPD: la vista pública NO expone telefono ni email_contacto.
+-- El contacto con el cuidador/a se hace siempre por el formulario. El dueño
+-- del perfil sigue viendo esos campos porque su panel lee de la tabla base.
+drop view if exists public.profiles_publicos;
+
+create view public.profiles_publicos as
   select
-    p.*,
-    (p.destacado_hasta is not null and p.destacado_hasta > now()) as destacado_activo
-  from public.profiles p;
+    id, user_id, nombre, foto_url, descripcion, curriculum, zona,
+    experiencia_anios, tarifa_hora, tipo_cuidado, disponibilidad,
+    destacado_hasta, created_at, updated_at,
+    (destacado_hasta is not null and destacado_hasta > now()) as destacado_activo
+  from public.profiles;
 
 -- Acceso de lectura a la vista para el cliente (anon) y usuarios logueados.
 -- Defensivo: garantiza el SELECT aunque los privilegios por defecto no cubran la vista.
