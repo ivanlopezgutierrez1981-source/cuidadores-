@@ -111,7 +111,24 @@ Ver [`.env.example`](.env.example) para la lista completa con comentarios.
 | `STRIPE_WEBHOOK_SECRET` | Secreto de firma del webhook (`whsec_…`) |
 | `RESEND_API_KEY` | Clave de Resend para el aviso por email al cuidador |
 | `EMAIL_FROM` | Remitente de los avisos (dominio verificado en Resend) |
+| `NEXT_PUBLIC_RECAPTCHA_SITE_KEY` | Site key de reCAPTCHA v3 (pública) |
+| `RECAPTCHA_SECRET_KEY` | Secret key de reCAPTCHA v3 (solo servidor) |
+| `RECAPTCHA_MIN_SCORE` | Umbral de score para aceptar (0–1, por defecto 0.5) |
 | `ADMIN_EMAILS` | Emails con acceso a `/admin` |
+
+### Anti-spam del formulario de contacto (reCAPTCHA v3)
+
+El formulario de `/cuidador/[id]` está protegido con **reCAPTCHA v3** (invisible,
+sin puzzles: Google devuelve un *score* 0–1). La verificación se hace en el
+servidor (`/api/contacto`) **antes** de guardar el contacto o enviar el email.
+
+1. En [Google reCAPTCHA admin](https://www.google.com/recaptcha/admin) crea un
+   sitio **reCAPTCHA v3**, añade tu dominio (y `localhost` para pruebas).
+2. Copia la **Site key** → `NEXT_PUBLIC_RECAPTCHA_SITE_KEY` y la **Secret key**
+   → `RECAPTCHA_SECRET_KEY`.
+3. Degradación elegante: si no configuras las claves, el formulario funciona
+   igual **sin** captcha; y si Google no responde, se permite el envío
+   (*fail-open*) para no perder contactos legítimos.
 
 ### Aviso por email al cuidador (Resend)
 

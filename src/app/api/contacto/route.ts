@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { createAdminClient } from "@/lib/supabase/server";
 import { enviarAvisoContacto } from "@/lib/email";
+import { verificarRecaptcha } from "@/lib/recaptcha";
 
 export const dynamic = "force-dynamic";
 
@@ -35,6 +36,21 @@ export async function POST(req: Request) {
   if (mensaje.length < 10) {
     return NextResponse.json(
       { error: "Escribe un mensaje un poco más detallado (mínimo 10 caracteres)." },
+      { status: 400 }
+    );
+  }
+
+  // ── Anti-spam: reCAPTCHA v3 (antes de guardar/enviar nada) ──
+  const captcha = await verificarRecaptcha(String(body.recaptchaToken ?? ""), "contacto");
+  if (!captcha.ok) {
+    console.warn(
+      `[contacto] reCAPTCHA bloqueó el envío: ${captcha.motivo} (score=${captcha.score ?? "?"})`
+    );
+    return NextResponse.json(
+      {
+        error:
+          "No hemos podido verificar que eres una persona. Recarga la página e inténtalo de nuevo.",
+      },
       { status: 400 }
     );
   }

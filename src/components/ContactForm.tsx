@@ -1,6 +1,18 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
+// reCAPTCHA v3 (invisible). Si no hay site key, todo funciona sin captcha.
+const RECAPTCHA_SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+
+declare global {
+  interface Window {
+    grecaptcha?: {
+      ready: (cb: () => void) => void;
+      execute: (siteKey: string, opts: { action: string }) => Promise<string>;
+    };
+  }
+}
 
 export default function ContactForm({
   profileId,
@@ -16,6 +28,35 @@ export default function ContactForm({
   const [enviando, setEnviando] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [enviado, setEnviado] = useState(false);
+
+  // Carga el script de reCAPTCHA v3 solo si hay site key configurada.
+  useEffect(() => {
+    if (!RECAPTCHA_SITE_KEY) return;
+    if (document.querySelector("script[data-recaptcha]")) return;
+    const s = document.createElement("script");
+    s.src = `https://www.google.com/recaptcha/api.js?render=${RECAPTCHA_SITE_KEY}`;
+    s.async = true;
+    s.defer = true;
+    s.setAttribute("data-recaptcha", "1");
+    document.head.appendChild(s);
+  }, []);
+
+  // Obtiene un token de reCAPTCHA para esta acción (o undefined si no aplica).
+  async function obtenerTokenRecaptcha(): Promise<string | undefined> {
+    if (!RECAPTCHA_SITE_KEY || !window.grecaptcha) return undefined;
+    try {
+      return await new Promise<string>((resolve, reject) => {
+        window.grecaptcha!.ready(() => {
+          window
+            .grecaptcha!.execute(RECAPTCHA_SITE_KEY!, { action: "contacto" })
+            .then(resolve)
+            .catch(reject);
+        });
+      });
+    } catch {
+      return undefined;
+    }
+  }
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -39,6 +80,7 @@ export default function ContactForm({
     // el servidor (/api/contacto): así el service_role y la RESEND_API_KEY
     // nunca llegan al cliente.
     try {
+      const recaptchaToken = await obtenerTokenRecaptcha();
       const res = await fetch("/api/contacto", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -48,6 +90,7 @@ export default function ContactForm({
           email: email.trim(),
           telefono: telefono.trim(),
           mensaje: mensaje.trim(),
+          recaptchaToken,
         }),
       });
       const data = await res.json().catch(() => ({}));
