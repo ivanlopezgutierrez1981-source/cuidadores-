@@ -18,6 +18,7 @@ const dmSerif = DM_Serif_Display({
   variable: "--font-dm-serif",
   display: "swap",
   weight: ["400"],
+  style: ["normal", "italic"],
 });
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://cuidadores.xyz";

@@ -52,12 +52,8 @@ export default function HomePage() {
           <Reveal>
             <span className="eyebrow">Cuidado de confianza, cerca de ti</span>
             <h1 className="mt-6 font-serif text-[2.75rem] font-semibold leading-[1.05] text-brand-900 sm:text-6xl">
-              La persona{" "}
-              <span className="relative whitespace-nowrap text-brand-700">
-                ideal
-                <span className="absolute -bottom-1 left-0 h-[3px] w-full rounded-full bg-gold-400/80" />
-              </span>{" "}
-              para cuidar de quien más quieres
+              La persona <span className="italic text-brand-500">ideal</span> para
+              cuidar de quien más quieres
             </h1>
             <p className="mt-6 max-w-lg text-lg leading-relaxed text-brand-600">
               Conectamos familias con cuidadores y cuidadoras de niños, mayores y
