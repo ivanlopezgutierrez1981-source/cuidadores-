@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { createClient } from "@/lib/supabase/client";
 
 export default function ContactForm({
   profileId,
@@ -36,32 +35,33 @@ export default function ContactForm({
     }
 
     setEnviando(true);
-    const supabase = createClient();
-    const { error: insErr } = await supabase.from("contacts").insert({
-      profile_id: profileId,
-      nombre_familia: nombre.trim(),
-      email: email.trim(),
-      telefono: telefono.trim() || null,
-      mensaje: mensaje.trim(),
-    });
-    setEnviando(false);
+    // El guardado del contacto + el aviso por email al cuidador se hacen en
+    // el servidor (/api/contacto): así el service_role y la RESEND_API_KEY
+    // nunca llegan al cliente.
+    try {
+      const res = await fetch("/api/contacto", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          profileId,
+          nombre: nombre.trim(),
+          email: email.trim(),
+          telefono: telefono.trim(),
+          mensaje: mensaje.trim(),
+        }),
+      });
+      const data = await res.json().catch(() => ({}));
+      setEnviando(false);
 
-    if (insErr) {
-      setError("No se ha podido enviar el mensaje. Inténtalo de nuevo.");
+      if (!res.ok || !data.ok) {
+        setError(data.error || "No se ha podido enviar el mensaje. Inténtalo de nuevo.");
+        return;
+      }
+    } catch {
+      setEnviando(false);
+      setError("Error de conexión. Inténtalo de nuevo.");
       return;
     }
-
-    // ── (Opcional) Aviso por email al cuidador ──────────────────────
-    // Dejado preparado para una fase futura. Crear una Route Handler
-    // /api/contacto que use el cliente admin para leer el email del
-    // cuidador y enviar el aviso con un proveedor (Resend, etc.):
-    //
-    // await fetch("/api/contacto", {
-    //   method: "POST",
-    //   headers: { "Content-Type": "application/json" },
-    //   body: JSON.stringify({ profileId, nombre, email, telefono, mensaje }),
-    // });
-    // ────────────────────────────────────────────────────────────────
 
     setEnviado(true);
   }

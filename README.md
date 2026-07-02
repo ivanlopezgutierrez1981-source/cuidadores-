@@ -109,7 +109,25 @@ Ver [`.env.example`](.env.example) para la lista completa con comentarios.
 | `STRIPE_SECRET_KEY` | Clave secreta de Stripe |
 | `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY` | Clave publicable de Stripe |
 | `STRIPE_WEBHOOK_SECRET` | Secreto de firma del webhook (`whsec_…`) |
+| `RESEND_API_KEY` | Clave de Resend para el aviso por email al cuidador |
+| `EMAIL_FROM` | Remitente de los avisos (dominio verificado en Resend) |
 | `ADMIN_EMAILS` | Emails con acceso a `/admin` |
+
+### Aviso por email al cuidador (Resend)
+
+Cuando una familia envía el formulario en `/cuidador/[id]`, el servidor
+(`/api/contacto`) guarda el mensaje en `contacts` **y** envía un email de aviso
+al cuidador (a su `email_contacto`, o al email de su cuenta como fallback).
+
+1. Crea una cuenta en [Resend](https://resend.com) y una **API key** →
+   `RESEND_API_KEY`.
+2. (Recomendado) Verifica tu dominio en Resend y pon `EMAIL_FROM` con una
+   dirección de ese dominio (p. ej. `cuidadores.xyz <avisos@cuidadores.xyz>`).
+   Para pruebas rápidas puedes dejar `EMAIL_FROM` vacío: se usará
+   `onboarding@resend.dev`.
+3. El envío es **best-effort**: si Resend falla, el contacto igualmente se
+   guarda y la familia ve el mensaje de éxito (el error solo se registra en los
+   logs del servidor).
 
 ---
 
