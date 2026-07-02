@@ -1,6 +1,7 @@
 import Link from "next/link";
 import SearchBar from "@/components/SearchBar";
 import Reveal from "@/components/Reveal";
+import OrbitDestacados from "@/components/OrbitDestacados";
 import { TIPO_CUIDADO_LABEL, PLANES } from "@/lib/types";
 
 const TIPOS = [
@@ -97,27 +98,7 @@ export default function HomePage() {
                   <StarIcon /> Destacado
                 </span>
               </div>
-              <ul className="space-y-3">
-                {[
-                  { n: "María G.", z: "Madrid · Centro", t: "Personas mayores", p: "12 €/h" },
-                  { n: "Lucía R.", z: "Barcelona · Eixample", t: "Niños", p: "10 €/h" },
-                  { n: "Andrés P.", z: "Valencia", t: "Dependientes", p: "14 €/h" },
-                ].map((c) => (
-                  <li
-                    key={c.n}
-                    className="flex items-center gap-3.5 rounded-2xl border border-brand-50 bg-cream/70 p-3.5 transition-colors hover:border-brand-100"
-                  >
-                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-brand-100 font-serif text-lg font-semibold text-brand-700">
-                      {c.n.charAt(0)}
-                    </div>
-                    <div className="flex-1">
-                      <p className="text-sm font-semibold text-brand-800">{c.n}</p>
-                      <p className="text-xs text-brand-500">{c.z} · {c.t}</p>
-                    </div>
-                    <span className="text-sm font-semibold text-brand-700">{c.p}</span>
-                  </li>
-                ))}
-              </ul>
+              <OrbitDestacados />
             </div>
           </Reveal>
         </div>
