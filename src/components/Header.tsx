@@ -11,17 +11,19 @@ export default async function Header() {
     <header className="sticky top-0 z-40 border-b border-brand-100/70 bg-cream/85 backdrop-blur-md">
       <div className="container-page flex h-[70px] items-center justify-between">
         <Link href="/" className="group flex items-center gap-2.5">
-          <span className="flex h-9 w-9 items-center justify-center rounded-2xl bg-brand-500 text-white shadow-card ring-1 ring-inset ring-white/10 transition-transform duration-200 group-hover:-translate-y-0.5">
-            {/* corazón / cuidado */}
-            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" aria-hidden>
+          {/* Isotipo oficial (Brand Guide 1.0) */}
+          <span className="block shrink-0 overflow-hidden rounded-[9px] shadow-card transition-transform duration-200 group-hover:-translate-y-0.5">
+            <svg width="38" height="38" viewBox="0 0 48 48" fill="none" className="block" aria-hidden>
+              <rect width="48" height="48" rx="12" fill="#2D8A79" />
               <path
-                d="M12 21s-7.5-4.6-10-9.2C.7 9 1.6 5.7 4.6 4.7c2-.7 3.9.2 4.9 1.7C10.5 4.9 12.4 4 14.4 4.7c3 1 3.9 4.3 2.6 7.1C19.5 16.4 12 21 12 21z"
-                fill="currentColor"
+                d="M24 36C24 36 10 27.5 10 18.5C10 14.1 13.4 11 17.5 11C20.2 11 22.6 12.5 24 14.8C25.4 12.5 27.8 11 30.5 11C34.6 11 38 14.1 38 18.5C38 27.5 24 36 24 36Z"
+                fill="white"
               />
             </svg>
           </span>
-          <span className="text-xl font-bold tracking-tight text-brand-900">
-            cuidadores<span className="text-brand-500">.xyz</span>
+          <span className="text-xl tracking-tight">
+            <span className="font-bold text-brand-900">cuidadores</span>
+            <span className="font-normal text-brand-500">.xyz</span>
           </span>
         </Link>
 

@@ -5,8 +5,18 @@ export default function Footer() {
     <footer className="mt-28 border-t border-brand-100 bg-white">
       <div className="container-page grid gap-10 py-16 sm:grid-cols-2 lg:grid-cols-4">
         <div className="max-w-xs">
-          <span className="text-xl font-bold tracking-tight text-brand-900">
-            cuidadores<span className="text-brand-500">.xyz</span>
+          <span className="flex items-center gap-2.5">
+            <svg width="34" height="34" viewBox="0 0 48 48" fill="none" className="block shrink-0 rounded-[8px] shadow-card" aria-hidden>
+              <rect width="48" height="48" rx="12" fill="#2D8A79" />
+              <path
+                d="M24 36C24 36 10 27.5 10 18.5C10 14.1 13.4 11 17.5 11C20.2 11 22.6 12.5 24 14.8C25.4 12.5 27.8 11 30.5 11C34.6 11 38 14.1 38 18.5C38 27.5 24 36 24 36Z"
+                fill="white"
+              />
+            </svg>
+            <span className="text-xl tracking-tight">
+              <span className="font-bold text-brand-900">cuidadores</span>
+              <span className="font-normal text-brand-500">.xyz</span>
+            </span>
           </span>
           <p className="mt-4 text-sm leading-relaxed text-brand-600">
             Conectamos familias con cuidadores y cuidadoras de confianza para
